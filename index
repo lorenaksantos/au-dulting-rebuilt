@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Au-dulting, Rebuilt</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #F8F6F2;
+    color: #1C1A2E;
+    line-height: 1.75;
+  }
+
+  .hero {
+    background: #1C1A2E;
+    padding: 80px 40px 72px;
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #E8957A;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: normal;
+    line-height: 1.12;
+    color: #F5F0EC;
+    margin-bottom: 28px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #E8957A;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: #A9A4C0;
+    max-width: 540px;
+    line-height: 1.8;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: #E8957A;
+    margin: 56px auto;
+    opacity: 0.5;
+  }
+
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 40px 56px;
+  }
+
+  h2 {
+    font-size: 11px;
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C4748A;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 17px;
+    color: #2E2A40;
+    margin-bottom: 18px;
+    max-width: 640px;
+  }
+
+  .pull-quote {
+    border-left: 3px solid #E8957A;
+    padding: 4px 0 4px 24px;
+    margin: 36px 0;
+    font-size: 20px;
+    font-style: italic;
+    color: #3A2E50;
+    line-height: 1.65;
+  }
+
+  .joy-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: 28px 0;
+  }
+
+  .joy-card {
+    background: #fff;
+    border: 1px solid #EAE4F0;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .joy-card .icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .joy-card p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #5A5470;
+    margin: 0;
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 28px 0;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #EAE4F0;
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+
+  .card h3 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1C1A2E;
+    margin-bottom: 6px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #6B647A;
+    margin: 0;
+    line-height: 1.6;
+    max-width: none;
+  }
+
+  .money-block {
+    background: #1C1A2E;
+    border-radius: 16px;
+    padding: 40px;
+    margin: 28px 0;
+  }
+
+  .money-block h3 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #E8957A;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .money-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .money-block .stat {
+    font-size: 38px;
+    font-weight: normal;
+    color: #F5F0EC;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .money-block .stat-label {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: #7A748A;
+    line-height: 1.5;
+  }
+
+  .money-block p {
+    font-size: 15px;
+    color: #B8B2CC;
+    max-width: none;
+    margin-bottom: 0;
+    line-height: 1.75;
+  }
+
+  .scale-block {
+    background: #F0EBF8;
+    border-radius: 16px;
+    padding: 36px;
+    margin: 28px 0;
+  }
+
+  .scale-block p { color: #3A2E50; max-width: none; }
+
+  .moon {
+    background: #2A1F3D;
+    border-radius: 16px;
+    padding: 48px 40px;
+    margin: 28px 0;
+  }
+
+  .moon h3 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #F2C94C;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .moon-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 22px;
+    align-items: flex-start;
+  }
+
+  .moon-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F2C94C;
+    margin-top: 10px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .moon-item p {
+    margin: 0;
+    font-size: 15px;
+    color: #C4BAD8;
+    max-width: none;
+    line-height: 1.75;
+  }
+
+  .closing {
+    background: #1C1A2E;
+    text-align: center;
+    padding: 72px 40px 80px;
+  }
+
+  .closing p {
+    font-size: 19px;
+    font-style: italic;
+    color: #A9A4C0;
+    margin: 0 auto 28px;
+    max-width: 500px;
+    line-height: 1.75;
+  }
+
+  .closing .name {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #E8957A;
+    font-style: normal;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 24px 56px; }
+    section { padding-left: 24px; padding-right: 24px; }
+    .money-block, .moon, .scale-block { padding: 28px 20px; }
+    .money-stats { grid-template-columns: 1fr; gap: 16px; }
+    .closing { padding: 56px 24px 64px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="tag">A product vision by Lorena Santos</p>
+    <h1>Au-dulting, <em>Rebuilt</em></h1>
+    <p class="hero-sub">What happens when you take a product built on real human experience and give it the tools it always deserved.</p>
+  </div>
+</div>
+
+<section style="padding-top: 56px;">
+  <h2>The experience</h2>
+  <p>Being an au pair is one of the most formative things a young woman can do. You land in a new country, move in with a family you just met, and suddenly you are responsible for the little humans they love most.</p>
+  <p>You bond with those kids. You watch them grow. You see America through fresh eyes, try food you have never tasted, make friends from six different countries, road trip to places you only knew from movies.</p>
+
+  <div class="joy-cards">
+    <div class="joy-card">
+      <span class="icon">🧒</span>
+      <p>Bonding with kids you end up loving</p>
+    </div>
+    <div class="joy-card">
+      <span class="icon">🗺️</span>
+      <p>Road trips across America</p>
+    </div>
+    <div class="joy-card">
+      <span class="icon">🍜</span>
+      <p>New food, new culture, new everything</p>
+    </div>
+    <div class="joy-card">
+      <span class="icon">🌍</span>
+      <p>Friends from around the world</p>
+    </div>
+  </div>
+
+  <p>Most au pairs say it changed their life. They mean it.</p>
+
+  <div class="pull-quote">The problem was never the experience. It was everything around it that nobody prepared them for.</div>
+
+  <p>I interviewed 60+ au pairs and mapped their full journey. The gaps were everywhere: how to get a Social Security Number, what to do in a conflict with a host family, how to save enough to actually travel, what their rights were when things got hard.</p>
+  <p>I built Au-dulting to fill those gaps. That was before AI changed what was possible.</p>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <h2>What Au-dulting becomes with AI</h2>
+  <p>The original vision was a database of quality information, organized and accessible. Good. But static. With AI it becomes something alive, something that actually knows where you are in your journey.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🧭</div>
+      <h3>Journey-aware guidance</h3>
+      <p>Personalized to where each au pair actually is. Pre-arrival, first month, rematch, post-program. Not generic. Hers.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Real-time answers</h3>
+      <p>Questions she cannot word, answered in English and her first language, with full au pair context built in.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Built fast</h3>
+      <p>AI-assisted research, vibe-coded MVP, content generation, competitor analysis, go-to-market. All faster than before.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📚</div>
+      <h3>Courses and quizzes</h3>
+      <p>Culture, safety, emergency handling. Bite-sized formats agencies can co-brand and offer to their au pairs.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>How it makes money</h2>
+  <div class="money-block">
+    <h3>The business model</h3>
+    <div class="money-stats">
+      <div>
+        <div class="stat">$10k+</div>
+        <p class="stat-label">agencies charge host families per au pair per year</p>
+      </div>
+      <div>
+        <div class="stat">$20k+</div>
+        <p class="stat-label">total annual cost to a host family including housing and food</p>
+      </div>
+    </div>
+    <p>The au pair never pays. Agencies do, because every rematch costs them money, time, and reputation. A tool that reduces conflict, improves communication between all three parties, and keeps participants happy is a retention product. The pitch writes itself.</p>
+  </div>
+
+  <p>Distribution channels: au pair agencies as B2B white-label, university international student programs, corporate relocation firms, immigration legal services.</p>
+  <p>The au pair is the user. The institution is the customer.</p>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <h2>The bigger opportunity</h2>
+  <div class="scale-block">
+    <p>Au pairs are the beachhead. But the problem, navigating US systems as a non-citizen in a second language without a support network, belongs to millions of people.</p>
+    <p>International students. Work visa holders. People mid-status-change. Given the current immigration climate, the need for clear, trustworthy, accessible guidance has never been more urgent or more underserved.</p>
+    <p>Au-dulting scales because the pain scales. And so does the joy of making it through.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <h2>Shoot for the moon</h2>
+  <div class="moon">
+    <h3>What this could actually become</h3>
+    <div class="moon-item">
+      <div class="moon-dot"></div>
+      <p>The platform every au pair agency in the US bundles into onboarding. Like travel insurance on a flight booking. Standard. Expected. There when you need it.</p>
+    </div>
+    <div class="moon-item">
+      <div class="moon-dot"></div>
+      <p>An AI layer on top of the US immigration system that actually speaks human. Not legalese. Not cold bureaucratic language. Warm, clear, and in your language.</p>
+    </div>
+    <div class="moon-item">
+      <div class="moon-dot"></div>
+      <p>A community where au pairs connect, support each other, and share the real experience. Safer and smarter than a Facebook group.</p>
+    </div>
+    <div class="moon-item">
+      <div class="moon-dot"></div>
+      <p>Eventually a data layer that helps policymakers understand what non-citizens actually experience, built from real questions, real moments, real people.</p>
+    </div>
+  </div>
+</section>
+
+<div class="closing">
+  <p>"I built this the first time because I lived it. I would build it again because the problem is still there, and now the tools exist to actually solve it."</p>
+  <span class="name">Lorena Santos</span>
+</div>
+
+</body>
+</html>
