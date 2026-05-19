@@ -138,6 +138,23 @@
     border: 1px solid #EAE4F0;
     border-radius: 12px;
     padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: #C4748A;
+  }
+
+  .card.open {
+    border-color: #C4748A;
+    grid-column: 1 / -1;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   .card-icon { font-size: 22px; margin-bottom: 10px; }
@@ -150,12 +167,64 @@
     margin-bottom: 6px;
   }
 
-  .card p {
+  .card .summary {
     font-size: 14px;
     color: #6B647A;
     margin: 0;
     line-height: 1.6;
     max-width: none;
+  }
+
+  .card .chevron {
+    font-size: 16px;
+    color: #C4748A;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 8px;
+    margin-top: 2px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  .card.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .card-detail {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #EAE4F0;
+  }
+
+  .card.open .card-detail {
+    display: block;
+  }
+
+  .card-detail p {
+    font-size: 15px;
+    color: #3A3550;
+    margin-bottom: 14px;
+    max-width: none;
+  }
+
+  .card-detail p:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-detail .money-note {
+    background: #F0EBF8;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    color: #3A2E50;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  .card-detail .money-note strong {
+    color: #C4748A;
+    font-weight: 600;
   }
 
   .money-block {
@@ -286,6 +355,7 @@
     .money-block, .moon, .scale-block { padding: 28px 20px; }
     .money-stats { grid-template-columns: 1fr; gap: 16px; }
     .closing { padding: 56px 24px 64px; }
+    .card.open { grid-column: 1; }
   }
 </style>
 </head>
@@ -335,34 +405,83 @@
 
 <section>
   <h2>What Au-dulting becomes with AI</h2>
-  <p>The original vision was a database of quality information, organized and accessible. Good. But static. With AI it becomes something alive, something that actually knows where you are in your journey.</p>
+  <p>The original vision was a database of quality information, organized and accessible. Good. But static. With AI it becomes something alive. Click any feature to go deeper.</p>
 
-  <div class="cards">
-    <div class="card">
-      <div class="card-icon">🧭</div>
-      <h3>Journey-aware guidance</h3>
-      <p>Personalized to where each au pair actually is. Pre-arrival, first month, rematch, post-program. Not generic. Hers.</p>
+  <div class="cards" id="feature-cards">
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div>
+          <div class="card-icon">🧭</div>
+          <h3>Journey-aware guidance</h3>
+        </div>
+        <span class="chevron">&#8964;</span>
+      </div>
+      <p class="summary">Personalized to where each au pair actually is. Pre-arrival, first month, rematch, post-program. Not generic. Hers.</p>
+      <div class="card-detail">
+        <p>Most apps treat every user the same. Au-dulting would know the difference between someone who just landed and someone three months in dealing with a difficult host family. The guidance, the tone, the resources, all of it shifts based on where she is in her journey.</p>
+        <p>Pre-arrival: documents to prepare, what to expect, questions to ask the host family. First month: navigating the routine, understanding rights, getting the SSN and driver's license sorted. Mid-program: conflict resolution, rematch support, financial planning for travel. Post-program: visa options, what comes next, how to make the most of the time left.</p>
+        <p>The au pair does not have to explain herself every time. The product already knows.</p>
+        <div class="money-note"><strong>Why it makes sense:</strong> Personalization drives retention and daily engagement. Higher engagement means more data, better outcomes, and a stronger case for agencies to renew. It also reduces inbound support tickets to the agency, which is a direct cost saving they can quantify.</div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">💬</div>
-      <h3>Real-time answers</h3>
-      <p>Questions she cannot word, answered in English and her first language, with full au pair context built in.</p>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div>
+          <div class="card-icon">💬</div>
+          <h3>Real-time answers</h3>
+        </div>
+        <span class="chevron">&#8964;</span>
+      </div>
+      <p class="summary">Questions she cannot word, answered in English and her first language, with full au pair context built in.</p>
+      <div class="card-detail">
+        <p>When an au pair is stressed, she does not want to search through a knowledge base. She wants to ask a question in whatever words she has, in whatever language feels natural, and get a real answer fast.</p>
+        <p>The difference from a generic AI chatbot is context. Au-dulting already knows she is on a J-1 visa, in her second month, living in Texas. The answer to "can my host family make me work weekends?" is not the same for everyone. It depends on her program, her state, her contract. Au-dulting would know that.</p>
+        <p>Bilingual support matters too. When something is hard or scary, people reach for their first language. Meeting her there is not a nice-to-have. It is the whole point.</p>
+        <div class="money-note"><strong>Why it makes sense:</strong> Every question answered by the product is a question not answered by an agency coordinator. Agencies spend real hours on support. A tool that handles the common questions at scale, accurately and in multiple languages, directly reduces operational cost and is easy to price into a B2B contract.</div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">⚡</div>
-      <h3>Built fast</h3>
-      <p>AI-assisted research, vibe-coded MVP, content generation, competitor analysis, go-to-market. All faster than before.</p>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div>
+          <div class="card-icon">⚡</div>
+          <h3>Built fast</h3>
+        </div>
+        <span class="chevron">&#8964;</span>
+      </div>
+      <p class="summary">AI-assisted research, vibe-coded MVP, content generation, competitor analysis, go-to-market. All faster than before.</p>
+      <div class="card-detail">
+        <p>The original Au-dulting was built manually during a pandemic with time, stubbornness, and 60 user interviews. Today the same foundation gets built in a fraction of the time.</p>
+        <p>AI handles the content generation, keeping the information library current as visa rules and state laws change. It handles competitive research, identifying gaps in what existing resources offer. It accelerates the MVP so we can get to real users and real feedback faster, which is where the actual product decisions get made.</p>
+        <p>The go-to-market is smarter too. AI helps identify which agencies are the right first targets, what their pain points are publicly, and how to reach the decision makers. Less guessing, more precision.</p>
+        <div class="money-note"><strong>Why it makes sense:</strong> Speed to market matters in a moment when immigration is a daily news story. A leaner build means lower upfront cost, faster iteration, and a quicker path to the first paying agency contract. The margin on a B2B SaaS tool built this way is significantly better than a traditionally built product.</div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-icon">📚</div>
-      <h3>Courses and quizzes</h3>
-      <p>Culture, safety, emergency handling. Bite-sized formats agencies can co-brand and offer to their au pairs.</p>
+
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-top">
+        <div>
+          <div class="card-icon">📚</div>
+          <h3>Courses and quizzes</h3>
+        </div>
+        <span class="chevron">&#8964;</span>
+      </div>
+      <p class="summary">Culture, safety, emergency handling. Bite-sized formats agencies can co-brand and offer to their au pairs.</p>
+      <div class="card-detail">
+        <p>Agencies are already required to provide orientation and ongoing education to au pairs. Right now most of that happens through generic PDFs and one-off Zoom calls. Au-dulting replaces that with something au pairs actually want to use.</p>
+        <p>Short courses on American culture, childcare best practices, what to do in a medical emergency, how to handle a conflict with a host family. Quizzes that are actually engaging. Completion tracking that agencies can report on. All of it co-branded so the agency looks like the hero.</p>
+        <p>This is also a natural upsell. The base product handles support and guidance. The courses module is a premium tier, priced per au pair or as an agency add-on.</p>
+        <div class="money-note"><strong>Why it makes sense:</strong> Courses are a recurring revenue layer on top of the base subscription. Agencies that use it for compliance tracking have a contractual reason to keep paying. Co-branding creates stickiness because the agency has invested their identity in the product. It also opens doors to universities and corporate relocation programs that have similar mandatory orientation requirements.</div>
+      </div>
     </div>
+
   </div>
 </section>
 
 <section>
-  <h2>How it makes money</h2>
+  <h2>How it makes sense</h2>
   <div class="money-block">
     <h3>The business model</h3>
     <div class="money-stats">
@@ -422,6 +541,14 @@
   <p>"I built this the first time because I lived it. I would build it again because the problem is still there, and now the tools exist to actually solve it."</p>
   <span class="name">Lorena Santos</span>
 </div>
+
+<script>
+function toggleCard(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+</script>
 
 </body>
 </html>
